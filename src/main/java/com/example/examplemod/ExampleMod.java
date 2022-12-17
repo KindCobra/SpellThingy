@@ -1,5 +1,9 @@
 package com.example.examplemod;
 
+import com.example.examplemod.common.spell.BasicParser;
+import com.example.examplemod.common.spell.PushEffect;
+import com.example.examplemod.common.spell.TargetEntities;
+import com.example.examplemod.common.spell.TargetSelf;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.BlockItem;
@@ -65,6 +69,10 @@ public class ExampleMod
         // Some common setup code
         LOGGER.info("HELLO FROM COMMON SETUP");
         LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
+
+        BasicParser.registerSpellComponent("push", PushEffect.class);
+        BasicParser.registerSpellComponent("me", TargetSelf.class);
+        BasicParser.registerSpellComponent("entities", TargetEntities.class);
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
